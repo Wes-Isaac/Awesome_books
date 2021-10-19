@@ -34,7 +34,7 @@ function addBooks(title, author) {
   books.push(book);
 }
 
-function updateLocalStorage(index) {
+function editLocalStorage(index) {
   books = JSON.parse(localStorage.books);
   const data = books.filter((book) => book !== books[index]);
   localStorage.setItem('books', JSON.stringify(data));
@@ -59,7 +59,7 @@ function displayBooks(arr) {
   remove.forEach((btn, index) => btn.addEventListener('click', () => {
     removeBook(index);
     displayBooks(books);
-    updateLocalStorage(index);
+    editLocalStorage(index);
   }));
 }
 
