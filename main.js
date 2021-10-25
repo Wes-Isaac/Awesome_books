@@ -13,28 +13,16 @@ function NewBooks(title, author) {
   this.author = author;
 }
 const bookContainer = container.querySelector('.books');
-// const form = container.querySelector('form')
 const add = container.querySelector('.add');
 const title = container.querySelector('.title');
 const author = container.querySelector('.author');
-// add.addEventListener('click', (e) => {
-//   console.log('meri');
-//   if (title.value !== '' && author.value !== '') {
-//     e.preventDefault();
-//     addBooks(title.value, author.value);
-//     localStorage.setItem('books', JSON.stringify(books));
-//     displayBooks(books);
-//     title.value = '';
-//     author.value = '';
-//   }
-// });
 
 function addBooks(title, author) {
   const book = new NewBooks(title, author);
   books.push(book);
 }
 
-function updateLocalStorage(index) {
+function editLocalStorage(index) {
   books = JSON.parse(localStorage.books);
   const data = books.filter((book) => book !== books[index]);
   localStorage.setItem('books', JSON.stringify(data));
@@ -59,7 +47,7 @@ function displayBooks(arr) {
   remove.forEach((btn, index) => btn.addEventListener('click', () => {
     removeBook(index);
     displayBooks(books);
-    updateLocalStorage(index);
+    editLocalStorage(index);
   }));
 }
 
